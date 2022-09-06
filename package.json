@@ -1,8 +1,9 @@
 {
-	"name": "persistence-db",
-	"version": "1.0.0",
-	"description": "",
-	"main": "src/index.ts",
+	"name": "worsen",
+	"version": "0.0.1",
+	"description": "A simple lock-and-release eventually-consistent DB to be consumed by multi-threaded applications in node.",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
 		"run-test": "ts-node ./run_test.ts"
 	},
