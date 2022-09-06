@@ -2,6 +2,14 @@
 
 A simple lock-and-release eventually-consistent DB to be consumed by multi-threaded applications in node.
 
+## Installation
+
+```sh
+npm i worsen
+```
+
+[![npm version](https://badge.fury.io/js/worsen.svg)](https://badge.fury.io/js/worsen)
+
 
 ## About
 - The database constructed as a utility for quick consumption by nodejs prototypes. It is not intended to be used in production. 
