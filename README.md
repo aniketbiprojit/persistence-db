@@ -19,27 +19,31 @@ holding the lock crashed. This is a known issue and will be fixed in the next re
 
 ```ts
 const store = new PersistentStore<boolean>( // generic over T
-    'persistent-store-test'// name for logs and file in db_dir
-    {
-        is_debug: false // boolean-> defaults to process.env.DEBUG_PERSISTENCE === 'true'
-        db_dir: "." // optional-> defaults to  join(__dirname, 'db')
+  'persistent-store-test'// name for logs and file in db_dir
+  {
+    // boolean-> defaults to process.env.DEBUG_PERSISTENCE === 'true'
+    is_debug: false 
+
+    // optional-> defaults to  join(__dirname, 'db')
+    db_dir: "." 
     }
 )
 ```
 
 ```ts
 store.init(
-    // polling interval in ms
-    5_000, 
-    // optional array of seed data
-    // type-> { uid:string, data:T }[] where T is generic over PersistentStore<T>
-    // only updates the db if the db is empty
-    [
-		{
-			uid: 'AppInit',
-			data: true,
-		},
-	])
+  // polling interval in ms
+  5_000, 
+  // optional array of seed data
+  // type-> { uid:string, data:T }[] 
+  // where T is generic over PersistentStore<T>
+  // only updates the db if the db is empty
+  [
+	{
+		uid: 'AppInit',
+		data: true,
+	},
+])
 ```
 
 ```ts
@@ -53,7 +57,9 @@ await store.write('AppErrors', false)
 ```
 
 ```ts
-// get the current state copy. Copies memory.
-// Can cause potential leaks if not used correctly. (like in loops)
+// get the current state copy. 
+// Copies memory.
+// Can cause potential leaks if not
+// used correctly. (like in loops)
 await store.get_hashmap_state()
 ```
