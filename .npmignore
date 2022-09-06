@@ -1,5 +1,6 @@
 src
 run_test.ts
 *.json
+!package.json
 db_dir
 *.yaml

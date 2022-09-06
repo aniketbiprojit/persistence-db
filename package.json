@@ -1,20 +1,29 @@
 {
 	"name": "worsen",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"description": "A simple lock-and-release eventually-consistent DB to be consumed by multi-threaded applications in node.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"run-test": "ts-node ./run_test.ts"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
+	"keywords": [
+		"typescript",
+		"database",
+		"standalone"
+	],
+	"author": {
+		"name": "Aniket Biprojit Chowdhury",
+		"email": "aniket_chowdhury@hotmail.com"
+	},
+	"devDependencies": {
+		"ts-node": "^10.9.1",
 		"@types/node": "^18.7.15",
 		"typescript": "^4.8.2"
 	},
-	"devDependencies": {
-		"ts-node": "^10.9.1"
-	}
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aniketbiprojit/persistence-db.git"
+	},
+	"license": "AGPL-3.0-or-later"
 }
