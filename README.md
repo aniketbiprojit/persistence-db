@@ -25,7 +25,9 @@ const store = new PersistentStore<boolean>( // generic over T
         db_dir: "." // optional-> defaults to  join(__dirname, 'db')
     }
 )
+```
 
+```ts
 store.init(
     // polling interval in ms
     5_000, 
@@ -38,13 +40,19 @@ store.init(
 			data: true,
 		},
 	])
+```
 
+```ts
 // read from store - synchronous read.
 const returned_value:bool = store.read('AppInit')
+```
 
+```ts
 // write from store
 await store.write('AppErrors', false)
+```
 
+```ts
 // get the current state copy. Copies memory.
 // Can cause potential leaks if not used correctly. (like in loops)
 await store.get_hashmap_state()
