@@ -1,7 +1,7 @@
 import assert from 'assert'
 import { PersistentStore } from './src/index'
 
-const store = new PersistentStore<boolean>('persistent-store-test')
+const store = new PersistentStore<boolean>()
 const run = async () => {
 	// seed if data doesn't exists
 	store.is_debug = false

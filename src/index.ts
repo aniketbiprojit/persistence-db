@@ -41,7 +41,7 @@ export class PersistentStore<T extends any = DataState> {
 	}
 
 	constructor(
-		name: string,
+		name?: string,
 		{
 			is_debug,
 			db_dir,
@@ -50,13 +50,16 @@ export class PersistentStore<T extends any = DataState> {
 			db_dir?: string
 		} = {}
 	) {
-		this._name = name
+		// js default to undefined
+		if (name) this._name = name
+
+		console.log(this._name)
 
 		is_debug = is_debug ?? process.env.DEBUG_PERSISTENCE === 'true'
 		db_dir = db_dir || join(process.cwd(), 'db_dir')
 
-		this.cache_db_location = join(db_dir, `${name}.cache.store.db`)
-		this.db_location = join(db_dir, `${name}.store.db`)
+		this.cache_db_location = join(db_dir, `${this._name}.cache.store.db`)
+		this.db_location = join(db_dir, `${this._name}.store.db`)
 		this.is_debug = is_debug
 		this.lockfile_location = join(db_dir, 'store.lock')
 
@@ -207,7 +210,6 @@ export class PersistentStore<T extends any = DataState> {
 		},
 		num = 0
 	): Promise<void> {
-		this.debug(uid, this.hashmap_state)
 		if (this.can_execute() && this.is_executing === false) {
 			this.create_lock(uid)
 			this.debug('write started')
