@@ -46,14 +46,14 @@ export class PersistentStore<T extends any = DataState> {
 			is_debug,
 			db_dir,
 		}: {
-			is_debug: boolean
-			db_dir: string
-		} = {
-			is_debug: process.env.DEBUG_PERSISTENCE === 'true',
-			db_dir: join(__dirname, 'db'),
-		}
+			is_debug?: boolean
+			db_dir?: string
+		} = {}
 	) {
 		this._name = name
+
+		is_debug = is_debug ?? process.env.DEBUG_PERSISTENCE === 'true'
+		db_dir = db_dir || join(process.cwd(), 'db_dir')
 
 		this.cache_db_location = join(db_dir, `${name}.cache.store.db`)
 		this.db_location = join(db_dir, `${name}.store.db`)
