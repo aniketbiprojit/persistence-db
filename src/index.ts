@@ -24,16 +24,16 @@ class JSONParseFail extends Error {
 }
 
 export class PersistentStore<T extends any = DataState> {
-	lockfile_location = '' //join(PersistentStore.db_dir, 'store.lock')
-	db_location: string
-	cache_db_location: string
+	public lockfile_location = ''
+	public db_location: string
+	public cache_db_location: string
 
 	private hashmap_state: {
 		app_state: { [key: string]: string }
 		data: { [key: string]: T }
 	} = { app_state: {}, data: {} }
 
-	is_debug = false
+	public is_debug = false
 	private _name = ''
 
 	get_hashmap_state() {
@@ -71,9 +71,17 @@ export class PersistentStore<T extends any = DataState> {
 		}
 	}
 
-	is_executing = false
+	private _is_executing = false
 
-	init_status = false
+	public get is_executing() {
+		return this._is_executing
+	}
+
+	private set is_executing(value) {
+		this._is_executing = value
+	}
+
+	private init_status = false
 
 	private create_lock(uid: string) {
 		writeFileSync(this.lockfile_location, JSON.stringify({ thread_name: this._name, uid, pid: process.pid }))
@@ -85,14 +93,14 @@ export class PersistentStore<T extends any = DataState> {
 		this.debug('lock removed')
 	}
 
-	can_execute() {
+	public can_execute() {
 		if (existsSync(this.lockfile_location)) {
 			return false
 		}
 		return true
 	}
 
-	read(uid: string) {
+	public read(uid: string) {
 		this.debug('read')
 
 		// returns old value
@@ -100,9 +108,16 @@ export class PersistentStore<T extends any = DataState> {
 		return this.hashmap_state['data'][uid]
 	}
 
-	interval: NodeJS.Timer
-	polling_interval = 10_000
-	init(polling_interval = this.polling_interval, init_data?: { uid: string; data: T }[]) {
+	private _interval: NodeJS.Timer
+	public get interval(): NodeJS.Timer {
+		return this._interval
+	}
+	private set interval(value: NodeJS.Timer) {
+		this._interval = value
+	}
+
+	public polling_interval = 10_000
+	public init(polling_interval = this.polling_interval, init_data?: { uid: string; data: T }[]) {
 		if (this.init_status === false) {
 			this.debug('init')
 			this.poll(init_data)
@@ -181,7 +196,7 @@ export class PersistentStore<T extends any = DataState> {
 		}
 	}
 
-	async write(
+	public async write(
 		{
 			uid = crypto.randomBytes(16).toString('hex'),
 			data,
