@@ -34,7 +34,7 @@ export class PersistentStore<T extends any = DataState> {
 	} = { app_state: {}, data: {} }
 
 	public is_debug = false
-	private _name = ''
+	private _name = 'worsen'
 
 	get_hashmap_state() {
 		return Object.assign({}, this.hashmap_state)

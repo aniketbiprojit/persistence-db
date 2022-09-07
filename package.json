@@ -5,7 +5,8 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"run-test": "ts-node ./run_test.ts"
+		"run-test": "ts-node ./run_test.ts",
+		"prepublishOnly": "./prepublish.sh"
 	},
 	"keywords": [
 		"typescript",
