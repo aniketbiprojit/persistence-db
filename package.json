@@ -1,6 +1,6 @@
 {
 	"name": "worsen",
-	"version": "0.0.4-alpha.3",
+	"version": "0.0.4-alpha.4",
 	"description": "A simple lock-and-release eventually-consistent DB to be consumed by multi-threaded applications in node.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
