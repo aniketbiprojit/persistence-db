@@ -74,25 +74,45 @@ await store.get_hashmap_state()
 
 ## CLI
 
-`npm i -g worsen`
+```sh
+npm i -g worsen
+```
 
-`worsen`
-
-```js
-> init [db_dir] [name] // defaults to init ./db_dir worsen
+- ### Default Init
+```sh
+> init [db_dir] [name] # defaults to init ./db_dir worsen
 worsen >
+```
 
-> init ./db_dir data // change db location and/or name
+- ### Init
+```sh
+> init ./db_dir data # change db location and/or name
 data > 
+```
 
-worsen > keys // list keys of db after init
+- ### List
+```sh
+worsen > list
+{
+  "key1": "value1",
+  "key2": "value2",
+  "key3": "value3",
+}
+```
+
+- ### Keys
+```sh
+worsen > keys # list keys of db after init
 key1
 key2
 key3
-
-worsen > get key1 // get key value
+```
+- ### Get Value
+```sh
+worsen > get key1 # get key value
 value1
+```
 
+```sh
 worsen > exit
-
 ```
