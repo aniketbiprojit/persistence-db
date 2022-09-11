@@ -4,9 +4,11 @@ import { readdirSync } from 'fs'
 import { resolve } from 'path'
 import { start } from 'repl'
 import { PersistentStore } from '.'
+import { getVersion } from './get_repl_version'
 
 let store: PersistentStore
 
+console.log(`Welcome to Worsen Repl ${getVersion()}.`)
 const repl = start({
 	eval: (data, _context, _file, cb) => {
 		let callback: any = cb
