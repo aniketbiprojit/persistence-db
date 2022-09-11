@@ -10,7 +10,6 @@ npm i worsen
 
 [![npm version](https://badge.fury.io/js/worsen.svg)](https://badge.fury.io/js/worsen)
 
-
 ## About
 - The database constructed as a utility for quick consumption by nodejs prototypes. It is not intended to be used in production. 
 
@@ -71,4 +70,29 @@ await store.write('AppErrors', false)
 // Can cause potential leaks if not
 // used correctly. (like in loops)
 await store.get_hashmap_state()
+```
+
+## CLI
+
+`npm i -g worsen`
+
+`worsen`
+
+```js
+> init [db_dir] [name] // defaults to init ./db_dir worsen
+worsen >
+
+> init ./db_dir data // change db location and/or name
+data > 
+
+worsen > keys // list keys of db after init
+key1
+key2
+key3
+
+worsen > get key1 // get key value
+value1
+
+worsen > exit
+
 ```

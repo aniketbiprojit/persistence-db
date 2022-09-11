@@ -7,7 +7,7 @@ import { PersistentStore } from '.'
 
 let store: PersistentStore
 
-start({
+const repl = start({
 	eval: (data, _context, _file, cb) => {
 		let callback: any = cb
 		if (data === 'ls\n') {
@@ -20,11 +20,17 @@ start({
 					})
 					.join('\n')
 			)
-			callback(null, null)
+			callback(null)
 		} else if (data.startsWith('init') && data.endsWith('\n')) {
 			let [, db_dir, name] = data.slice(0, -1).split(' ')
-			console.log({ name: name ?? 'worsen', db_dir: resolve(db_dir) })
-			store = new PersistentStore(name ?? 'worsen', {
+			name = name ?? 'worsen'
+			db_dir = db_dir ? resolve(db_dir) : resolve('./db_dir')
+			if (store?.polling_interval) {
+				clearInterval(store.polling_interval)
+			}
+			repl.setPrompt(`${name}> `)
+
+			store = new PersistentStore(name, {
 				is_debug: false,
 				db_dir: resolve(db_dir),
 			})
@@ -37,7 +43,7 @@ start({
 			console.log(store.read(uid))
 			callback(null)
 		} else if (data.startsWith('keys') && data.endsWith('\n')) {
-			console.log(Object.keys(store.get_hashmap_state().data))
+			console.log(Object.keys(store.get_hashmap_state().data).join('\n'))
 			callback(null)
 		} else if (data === '\n') {
 			callback(null)

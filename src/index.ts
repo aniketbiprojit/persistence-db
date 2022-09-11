@@ -53,7 +53,7 @@ export class PersistentStore<T extends any = DataState> {
 		// js default to undefined
 		if (name) this._name = name
 
-		console.log(this._name)
+		this.debug(this._name)
 
 		is_debug = is_debug ?? process.env.DEBUG_PERSISTENCE === 'true'
 		db_dir = db_dir || join(process.cwd(), 'db_dir')
