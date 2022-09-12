@@ -27,5 +27,8 @@
 		"type": "git",
 		"url": "https://github.com/aniketbiprojit/persistence-db.git"
 	},
-	"license": "AGPL-3.0-or-later"
+	"license": "AGPL-3.0-or-later",
+	"bin": {
+		"worsen": "./dist/cli.js"
+	}
 }
