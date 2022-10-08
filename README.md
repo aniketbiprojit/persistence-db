@@ -8,7 +8,8 @@ A simple lock-and-release eventually-consistent DB to be consumed by multi-threa
 npm i worsen
 ```
 
-[![npm version](https://badge.fury.io/js/worsen.svg)](https://badge.fury.io/js/worsen)
+[![npm version](https://img.shields.io/npm/v/worsen.svg?style=for-the-badge&label=worsen&color=brightgreen)](https://www.npmjs.com/package/worsen)
+
 
 ## About
 - The database constructed as a utility for quick consumption by nodejs prototypes. It is not intended to be used in production. 
